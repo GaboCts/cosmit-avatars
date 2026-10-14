@@ -1,0 +1,12 @@
+{
+  "name": "cosmith-avatar",
+  "version": "1.0.0",
+  "description": "Aplicación para recuperar fotos de perfil de usuarios en redes sociales",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "MIT"
+}

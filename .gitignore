@@ -15,3 +15,6 @@ sites.md
 ## Package configs
 package.json
 package-lock.json
+
+## Extra
+extra/

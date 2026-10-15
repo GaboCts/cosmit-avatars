@@ -4,6 +4,7 @@ import { getGitLabAvatar } from './providers/gitlab/gitlab.js'
 import { getDockerHubAvatar } from './providers/dockerhub/dockerhub.js'
 import { getStackOverflowAvatar } from './providers/stackoverflow/stackoverflow.js'
 import { getGravatar } from './providers/gravatar/gravatar.js'
+import { downloadAndResize, generateErrorImage } from './utils/image.js'
 
 export async function handleAvatarRequest(url) {
     const cleanUrl = url.split('?')[0]
@@ -29,18 +30,23 @@ export async function handleAvatarRequest(url) {
         case 'twitch':
             response = await getTwitchAvatar(input)
             break
+
         case 'github':
             response = await getGitHubAvatar(input)
             break
+
         case 'gitlab':
             response = await getGitLabAvatar(input)
             break
+
         case 'dockerhub':
             response = await getDockerHubAvatar(input)
             break
+
         case 'stackoverflow':
             response = await getStackOverflowAvatar(input)
             break
+
         case 'gravatar':
             response = await getGravatar(input)
             break
@@ -51,27 +57,38 @@ export async function handleAvatarRequest(url) {
                 body: {
                     error: 'Provider not supported',
                     message: `Provider "${profilePrivider}" is not available.`,
-                    providersSupported: ['twitch', 'github']
+                    providersSupported: ['twitch', 'github', 'gitlab', 'dockerhub', 'stackoverflow', 'gravatar']
                 }
             }
     }
 
     if (response.error) {
+        const errorImage = await generateErrorImage('Error', response.message)
         return {
             status: response.status || 404,
             body: {
-                error: response.error,
-                message: response.message
+                image: errorImage.buffer,
+                contentType: errorImage.contentType
             }
         }
     }
 
-    return {
-        status: 200,
-        body: {
-            provider: profilePrivider,
-            user: input,
-            avatar_url: response.avatar_url
+    try {
+        const { buffer, contentType } = await downloadAndResize(response.avatar_url)
+        return {
+            status: 200,
+            body: {
+                image: buffer,
+                contentType: contentType
+            }
+        }
+    } catch (error) {
+        return {
+            status: 502,
+            body: {
+                error: 'Error processing image',
+                message: error.message
+            }
         }
     }
 }

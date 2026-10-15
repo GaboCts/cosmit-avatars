@@ -6,15 +6,25 @@ process.loadEnvFile()
 const PORT = process.env.PORT || 3000
 
 const server = createServer(async (req, res) => {
-    res.setHeader('Content-Type', 'application/json; charset=utf-8')
     res.setHeader('Access-Control-Allow-Origin', '*')
 
     try {
         const result = await handleAvatarRequest(req.url)
         res.statusCode = result.status
-        res.end(JSON.stringify(result.body))
+
+        // Si la respuesta contiene una imagen (buffer), servirla directamente
+        if (result.body.image) {
+            res.setHeader('Content-Type', result.body.contentType)
+            res.setHeader('Cache-Control', 'public, max-age=3600')
+            res.end(result.body.image)
+        } else {
+            // Respuesta JSON (errores de formato, proveedor no soportado, etc.)
+            res.setHeader('Content-Type', 'application/json; charset=utf-8')
+            res.end(JSON.stringify(result.body))
+        }
     } catch (error) {
         res.statusCode = 500
+        res.setHeader('Content-Type', 'application/json; charset=utf-8')
         res.end(JSON.stringify({
             error: 'Internal Server Error',
             message: error.message

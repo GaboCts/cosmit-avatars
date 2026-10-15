@@ -1,11 +1,15 @@
-# Variables de entorno
+# Enviroment
 .env
 
-# Caché del token de Twitch
+# Twitch token cache
 providers/twitch/.twitch-token-cache.json
 
-# Carpeta del proveedor X
+# x provider
 providers/x/
 
-# Documentación que no deseas subir
+# Extra documentation
 sites.md
+
+## Package configs
+package.json
+package-lock.json

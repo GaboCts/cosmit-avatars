@@ -107,7 +107,6 @@ function loadTokenFromFile() {
         if (tokenData.token && expiresAt && new Date() < expiresAt) {
             cachedToken = tokenData.token
             tokenExpiration = expiresAt
-            console.log('[Twitch] Token loaded:', tokenExpiration.toLocaleString())
         }
     } catch (error) {
         console.warn('[Twitch] Error loading Token:', error.message)

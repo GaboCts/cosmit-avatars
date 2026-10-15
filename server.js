@@ -12,13 +12,11 @@ const server = createServer(async (req, res) => {
         const result = await handleAvatarRequest(req.url)
         res.statusCode = result.status
 
-        // Si la respuesta contiene una imagen (buffer), servirla directamente
         if (result.body.image) {
             res.setHeader('Content-Type', result.body.contentType)
             res.setHeader('Cache-Control', 'public, max-age=3600')
             res.end(result.body.image)
         } else {
-            // Respuesta JSON (errores de formato, proveedor no soportado, etc.)
             res.setHeader('Content-Type', 'application/json; charset=utf-8')
             res.end(JSON.stringify(result.body))
         }
@@ -32,6 +30,6 @@ const server = createServer(async (req, res) => {
     }
 })
 
-server.listen(PORT, () => {
+server.listen(PORT, '127.0.0.1', () => {
     console.log(`Active avatar server in http://localhost:${PORT}`)
 })

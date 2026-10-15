@@ -24,6 +24,9 @@ export async function handleAvatarRequest(url) {
     const profilePrivider = segments[1].toLowerCase()
     const input = segments[2]
 
+    const requestTime = new Date()
+    console.log(`[${requestTime.toLocaleString()}]: ${segments[0]} / ${segments[1]} / ${segments[2]}`)
+
     let response
 
     switch (profilePrivider) {

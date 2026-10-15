@@ -1,5 +1,7 @@
 # Enviroment
 .env
+.env.*
+!.env.example
 
 # Twitch token cache
 providers/twitch/.twitch-token-cache.json

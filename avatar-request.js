@@ -5,6 +5,7 @@ import { getDockerHubAvatar } from './providers/dockerhub/dockerhub.js'
 import { getStackOverflowAvatar } from './providers/stackoverflow/stackoverflow.js'
 import { getGravatar } from './providers/gravatar/gravatar.js'
 import { downloadAndResize, generateErrorImage } from './utils/image.js'
+import { Providers } from './utils/providers.js'
 
 export async function handleAvatarRequest(url) {
     const cleanUrl = url.split('?')[0]
@@ -60,7 +61,7 @@ export async function handleAvatarRequest(url) {
                 body: {
                     error: 'Provider not supported',
                     message: `Provider "${profilePrivider}" is not available.`,
-                    providersSupported: ['twitch', 'github', 'gitlab', 'dockerhub', 'stackoverflow', 'gravatar']
+                    providersSupported: Providers
                 }
             }
     }

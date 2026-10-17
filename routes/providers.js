@@ -9,6 +9,8 @@ class providerController {
 
     static async getProviders(req, res) {
         const providers = Providers
+        const requestTime = new Date()
+        console.log(`[${requestTime.toLocaleString()}]: Providers requested`)
         return res.json(providers)
     }
 
@@ -22,6 +24,9 @@ class providerController {
                 message: `Provider "${provider}" not found`
             })
         }
+
+        const requestTime = new Date()
+        console.log(`[${requestTime.toLocaleString()}]: Provider: ${ provider }`)
 
         return res.json({
             [provider]: {

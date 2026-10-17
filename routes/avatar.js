@@ -7,6 +7,9 @@ class avatarController {
     static async getAvatar(req, res) {
         const { provider, input } = req.params
 
+        const requestTime = new Date()
+        console.log(`[${requestTime.toLocaleString()}]: Avatar: Provider=${ provider } | Input=${ input }`)
+
         try {
             const avatar = await avatarModel.getAvatar({ provider, input })
             res.statusCode = avatar.status

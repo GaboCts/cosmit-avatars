@@ -34,7 +34,7 @@ app.use("/avatar", avatarRouter)
 app.use(formatRouter)
 
 app.listen(PORT, '127.0.0.1', () => {
-    console.log(`Active avatar server in http://localhost:${PORT}`)
+    console.log(`Active avatar server in https://cosmitavatars.space:${PORT}`)
 })
 
 export default app

@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import { avatarModel } from '../models/avatar.js'
-import { Providers } from '../utils/providers.js'
 
 export const avatarRouter = Router()
 
@@ -29,13 +28,6 @@ class avatarController {
             }))
         }
     }
-
-    static async getProviders(req, res) {
-        const providers = Providers
-
-        return res.json(providers)
-    }
 }
 
-avatarRouter.get('/providers', avatarController.getProviders)
 avatarRouter.get('/:provider/:input', avatarController.getAvatar)

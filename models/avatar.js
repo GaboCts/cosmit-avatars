@@ -1,11 +1,12 @@
-import { getDockerHubAvatar } from "../providers/dockerhub/dockerhub.js"
-import { getGitHubAvatar } from "../providers/github/github.js"
-import { getGitLabAvatar } from "../providers/gitlab/gitlab.js"
-import { getGravatar } from "../providers/gravatar/gravatar.js"
-import { getStackOverflowAvatar } from "../providers/stackoverflow/stackoverflow.js"
-import { getTwitchAvatar } from "../providers/twitch/twitch.js"
-import { downloadAndResize, generateErrorImage } from "../utils/image.js"
-import { Providers } from "../utils/providers.js"
+import { getDockerHubAvatar } from '../providers/dockerhub/dockerhub.js'
+import { getGitHubAvatar } from '../providers/github/github.js'
+import { getGitLabAvatar } from '../providers/gitlab/gitlab.js'
+import { getGravatar } from '../providers/gravatar/gravatar.js'
+import { getRedditAvatar } from '../providers/reddit/reddit.js'
+import { getStackOverflowAvatar } from '../providers/stackoverflow/stackoverflow.js'
+import { getTwitchAvatar } from '../providers/twitch/twitch.js'
+import { downloadAndResize, generateErrorImage } from '../utils/image.js'
+import { Providers } from '../utils/providers.js'
 
 let response
 
@@ -13,30 +14,27 @@ export class avatarModel {
 
     static async getAvatar({ provider, input }) {
         switch (provider) {
-            case 'twitch':
-                response = await getTwitchAvatar(input)
-                break
-    
-            case 'github':
-                response = await getGitHubAvatar(input)
-                break
-    
-            case 'gitlab':
-                response = await getGitLabAvatar(input)
-                break
-    
             case 'dockerhub':
                 response = await getDockerHubAvatar(input)
                 break
-    
-            case 'stackoverflow':
-                response = await getStackOverflowAvatar(input)
+            case 'github':
+                response = await getGitHubAvatar(input)
                 break
-    
+            case 'gitlab':
+                response = await getGitLabAvatar(input)
+                break
             case 'gravatar':
                 response = await getGravatar(input)
                 break
-    
+            case 'reddit':
+                response = await getRedditAvatar(input)
+                break
+            case 'stackoverflow':
+                response = await getStackOverflowAvatar(input)
+                break
+            case 'twitch':
+                response = await getTwitchAvatar(input)
+                break
             default:
                 return {
                     status: 400,

@@ -12,7 +12,6 @@ export async function getGitLabAvatar(user) {
         )
 
         const data = JSON.parse(responseBody)
-        console.log(data.length)
 
         if (data.length  === 0) {
             return {

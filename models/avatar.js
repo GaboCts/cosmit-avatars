@@ -7,6 +7,7 @@ import { getMastodonAvatar } from '../providers/mastodon/mastodon.js'
 import { getRedditAvatar } from '../providers/reddit/reddit.js'
 import { getStackOverflowAvatar } from '../providers/stackoverflow/stackoverflow.js'
 import { getTwitchAvatar } from '../providers/twitch/twitch.js'
+import { getVimeoAvatar } from '../providers/vimeo/vimeo.js'
 import { getXboxAvatar } from '../providers/xbox/xbox.js'
 import { downloadAndResize, generateErrorImage } from '../utils/image.js'
 import { Providers } from '../utils/providers.js'
@@ -43,6 +44,9 @@ export class avatarModel {
                 break
             case 'twitch':
                 response = await getTwitchAvatar(input)
+                break
+            case 'vimeo':
+                response = await getVimeoAvatar(input)
                 break
             case 'xbox':
                 response = await getXboxAvatar(input)

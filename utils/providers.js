@@ -46,6 +46,11 @@ export const Providers  = {
             logo_url: `${PROVIDERS_BASE_URL}/twitch.svg`,
             input_type: 'channel'
         },
+        vimeo: {
+            provider: 'Vimeo',
+            logo_url: `${PROVIDERS_BASE_URL}/vimeo.svg`,
+            input_type: 'user_id'
+        },
         xbox: {
             provider: 'Xbox',
             logo_url: `${PROVIDERS_BASE_URL}/xbox.svg`,

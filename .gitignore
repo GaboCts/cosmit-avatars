@@ -18,3 +18,7 @@ package-lock.json
 
 ## Extra
 extra/
+
+## Files not used
+server-bk.js
+avatar-request.js

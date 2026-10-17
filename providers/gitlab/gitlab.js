@@ -12,8 +12,9 @@ export async function getGitLabAvatar(user) {
         )
 
         const data = JSON.parse(responseBody)
+        console.log(data.length)
 
-        if (!data[0].avatar_url) {
+        if (data.length  === 0) {
             return {
                 error: 'User not found',
                 message: `User "${user}" not found`,

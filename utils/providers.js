@@ -22,9 +22,9 @@ export const Providers  = {
             provider: 'Reddit',
             logo_url: `${PROVIDERS_BASE_URL}/reddit.svg`
         },
-        stachoverflow: {
+        stackoverflow: {
             provider: 'Stack Overflow',
-            logo_url: `${PROVIDERS_BASE_URL}/stachoverflow.svg`
+            logo_url: `${PROVIDERS_BASE_URL}/stackoverflow.svg`
         },
         twitch: {
             provider: 'Twitch',

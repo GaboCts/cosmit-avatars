@@ -24,8 +24,10 @@ class providerController {
         }
 
         return res.json({
-            provider,
-            logo_url: `${PROVIDERS_BASE_URL}/${provider}.svg`
+            [provider]: {
+                provider: Providers.providers[provider].provider,
+                logo_url: `${PROVIDERS_BASE_URL}/${provider}.svg`
+            }
         })
     }
 }

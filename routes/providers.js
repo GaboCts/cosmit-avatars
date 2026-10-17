@@ -26,7 +26,8 @@ class providerController {
         return res.json({
             [provider]: {
                 provider: Providers.providers[provider].provider,
-                logo_url: `${PROVIDERS_BASE_URL}/${provider}.svg`
+                logo_url: `${PROVIDERS_BASE_URL}/${provider}.svg`,
+                input_type: Providers.providers[provider].input_type
             }
         })
     }

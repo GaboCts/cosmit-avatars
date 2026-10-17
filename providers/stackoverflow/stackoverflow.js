@@ -1,9 +1,9 @@
 import { makeRequest } from '../../utils/request.js'
 
-export async function getStackOverflowAvatar(id) {
+export async function getStackOverflowAvatar(user_id) {
     try {
         const responseBody = await makeRequest(
-            `https://api.stackexchange.com/2.3/users/${encodeURIComponent(id)}?site=stackoverflow`,
+            `https://api.stackexchange.com/2.3/users/${encodeURIComponent(user_id)}?site=stackoverflow`,
             'GET',
             null,
             {
@@ -16,7 +16,7 @@ export async function getStackOverflowAvatar(id) {
         if (!data.items[0].profile_image) {
             return {
                 error: 'User not found',
-                message: `User "${id}" not found`,
+                message: `User "${user_id}" not found`,
                 status: 404
             }
         }

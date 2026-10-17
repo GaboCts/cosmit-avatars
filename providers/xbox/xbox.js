@@ -4,6 +4,14 @@ const XBOX_API_KEY = process.env.XBOX_API_KEY || 'none'
 
 export async function getXboxAvatar(gamertag) {
     try {
+        if (XBOX_API_KEY === 'none') {
+            return {
+                error: 'Credential error',
+                message: 'Contact the administrator to fix the problem.',
+                status: 500
+            }
+        }
+
         const responseBody = await makeRequest(
             `https://api.xbl.io/v2/search/${encodeURIComponent(gamertag)}`,
             'GET',

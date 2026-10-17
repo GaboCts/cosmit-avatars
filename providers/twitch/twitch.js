@@ -16,7 +16,7 @@ const TOKEN_CACHE_FILE = path.join(__dirname, '.twitch-token-cache.json')
 let cachedToken = null
 let tokenExpiration = null
 
-export async function getTwitchAvatar(user) {
+export async function getTwitchAvatar(channel) {
     try {
         if (TWITCH_CLIENT_ID === 'none' || TWITCH_CLIENT_SECRET === 'none') {
             return {
@@ -29,7 +29,7 @@ export async function getTwitchAvatar(user) {
         const token = await getAccessToken()
 
         const responseBody = await makeRequest(
-            `https://api.twitch.tv/helix/users?login=${encodeURIComponent(user)}`,
+            `https://api.twitch.tv/helix/users?login=${encodeURIComponent(channel)}`,
             'GET',
             null,
             {
@@ -43,7 +43,7 @@ export async function getTwitchAvatar(user) {
         if (!data.data || data.data.length === 0) {
             return {
                 error: 'User not found',
-                message: `User "${user}" not found`,
+                message: `User "${channel}" not found`,
                 status: 404
             }
         }

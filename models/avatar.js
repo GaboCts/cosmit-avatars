@@ -1,10 +1,13 @@
+import { getBlueSkyAvatar } from '../providers/bluesky/bluesky.js'
 import { getDockerHubAvatar } from '../providers/dockerhub/dockerhub.js'
 import { getGitHubAvatar } from '../providers/github/github.js'
 import { getGitLabAvatar } from '../providers/gitlab/gitlab.js'
 import { getGravatar } from '../providers/gravatar/gravatar.js'
+import { getMastodonAvatar } from '../providers/mastodon/mastodon.js'
 import { getRedditAvatar } from '../providers/reddit/reddit.js'
 import { getStackOverflowAvatar } from '../providers/stackoverflow/stackoverflow.js'
 import { getTwitchAvatar } from '../providers/twitch/twitch.js'
+import { getXboxAvatar } from '../providers/xbox/xbox.js'
 import { downloadAndResize, generateErrorImage } from '../utils/image.js'
 import { Providers } from '../utils/providers.js'
 
@@ -14,6 +17,9 @@ export class avatarModel {
 
     static async getAvatar({ provider, input }) {
         switch (provider) {
+            case 'bluesky':
+                response = await getBlueSkyAvatar(input)
+                break
             case 'dockerhub':
                 response = await getDockerHubAvatar(input)
                 break
@@ -25,7 +31,10 @@ export class avatarModel {
                 break
             case 'gravatar':
                 response = await getGravatar(input)
-            //     break
+                break
+            case 'mastodon':
+                response = await getMastodonAvatar(input)
+                break
             // case 'reddit':
             //     response = await getRedditAvatar(input)
             //     break
@@ -34,6 +43,9 @@ export class avatarModel {
                 break
             case 'twitch':
                 response = await getTwitchAvatar(input)
+                break
+            case 'xbox':
+                response = await getXboxAvatar(input)
                 break
             default:
                 return {

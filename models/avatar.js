@@ -25,10 +25,10 @@ export class avatarModel {
                 break
             case 'gravatar':
                 response = await getGravatar(input)
-                break
-            case 'reddit':
-                response = await getRedditAvatar(input)
-                break
+            //     break
+            // case 'reddit':
+            //     response = await getRedditAvatar(input)
+            //     break
             case 'stackoverflow':
                 response = await getStackOverflowAvatar(input)
                 break

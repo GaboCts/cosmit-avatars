@@ -7,13 +7,14 @@ export async function getRedditAvatar(user) {
             'GET',
             null,
             {
-                'User-Agent': 'cosmith-avatar-app (by /u/GaboCts)'
+                'User-Agent': 'cosmith-avatar-app (by /u/GaboCts)',
+                'Accept': 'application/json'
             }
         )
         
-        const data = JSON.parse(responseBody)
+        const data = typeof responseBody === 'string' ? JSON.parse(responseBody) : responseBody
 
-        if (data.data.message === 'Not Found' || !data.data.icon_img) {
+        if (data?.error === 404 || !data?.data) {
             return {
                 error: 'User not found',
                 message: `User "${user}" not found`,
@@ -21,9 +22,20 @@ export async function getRedditAvatar(user) {
             }
         }
 
-        return {
-            avatar_url: data.icon_img.split('?')[0]
+        const avatarUrl = data.data.icon_img
+
+        if (!avatarUrl) {
+            return {
+                error: 'Avatar not found',
+                message: `No avatar available for "${user}"`,
+                status: 404
+            }
         }
+
+        return {
+            avatar_url: avatarUrl.split('?')[0]
+        }
+
     } catch (error) {
         return {
             error: 'Error fetching Reddit',

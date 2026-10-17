@@ -9,7 +9,7 @@ export function makeRequest(url, method, body, headers = {}) {
             port: urlObj.port || 443,
             path: urlObj.pathname + urlObj.search,
             method: method,
-            headers: headers
+            headers: { ...headers }
         }
 
         if (body) {

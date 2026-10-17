@@ -22,11 +22,11 @@ export const Providers  = {
             logo_url: `${PROVIDERS_BASE_URL}/gravatar.svg`,
             input_type: 'email'
         },
-        reddit: {
-            provider: 'Reddit',
-            logo_url: `${PROVIDERS_BASE_URL}/reddit.svg`,
-            input_type: 'username'
-        },
+        // reddit: {
+        //     provider: 'Reddit',
+        //     logo_url: `${PROVIDERS_BASE_URL}/reddit.svg`,
+        //     input_type: 'username'
+        // },
         stackoverflow: {
             provider: 'Stack Overflow',
             logo_url: `${PROVIDERS_BASE_URL}/stackoverflow.svg`,

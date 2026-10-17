@@ -2,7 +2,11 @@ const PROVIDERS_BASE_URL = process.env.PROVIDERS_BASE_URL || 'http://localhost:3
 
 export const Providers  = {
     providers: {
-        dockerhub: {
+        bluesky: {
+            provider: 'BlueSky',
+            logo_url: `${PROVIDERS_BASE_URL}/bluesky.svg`,
+            input_type: 'username'
+        },dockerhub: {
             provider: 'Docker Hub',
             logo_url: `${PROVIDERS_BASE_URL}/dockerhub.svg`,
             input_type: 'username'
@@ -22,6 +26,11 @@ export const Providers  = {
             logo_url: `${PROVIDERS_BASE_URL}/gravatar.svg`,
             input_type: 'email'
         },
+        mastodon: {
+            provider: 'Mastodon',
+            logo_url: `${PROVIDERS_BASE_URL}/mastodon.svg`,
+            input_type: 'username'
+        },
         // reddit: {
         //     provider: 'Reddit',
         //     logo_url: `${PROVIDERS_BASE_URL}/reddit.svg`,
@@ -36,6 +45,11 @@ export const Providers  = {
             provider: 'Twitch',
             logo_url: `${PROVIDERS_BASE_URL}/twitch.svg`,
             input_type: 'channel'
+        },
+        xbox: {
+            provider: 'Xbox',
+            logo_url: `${PROVIDERS_BASE_URL}/xbox.svg`,
+            input_type: 'gamertag'
         }
     }
 }

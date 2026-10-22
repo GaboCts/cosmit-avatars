@@ -46,7 +46,7 @@ export const Providers  = {
             provider: 'Stack Overflow',
             logo_url: `${PROVIDERS_BASE_URL}/stackoverflow.svg`,
             input_type: 'user_id',
-            provider_site: 'stackoverflow.com/'
+            provider_site: 'stackoverflow.com'
         },
         twitch: {
             provider: 'Twitch',

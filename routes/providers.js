@@ -32,7 +32,8 @@ class providerController {
             [provider]: {
                 provider: Providers.providers[provider].provider,
                 logo_url: `${PROVIDERS_BASE_URL}/${provider}.svg`,
-                input_type: Providers.providers[provider].input_type
+                input_type: Providers.providers[provider].input_type,
+                provider_site: Providers.providers[provider].provider_site
             }
         })
     }

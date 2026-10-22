@@ -126,6 +126,12 @@ If you find an issue or have an idea to improve Cosmit Avatars, consider opening
 
 ## 📄 License
 
+Cosmit Avatars is licensed under the [MIT License](./LICENSE).
+
+You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, subject to the terms of the license.
+
+See the [LICENSE](./LICENSE) file for the full license text.
+
 ---
 
 Made with ❤️ for developers.
